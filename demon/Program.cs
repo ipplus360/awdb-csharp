@@ -15,7 +15,7 @@ namespace demon
                 var metadata = reader.Metadata;
 
                 
-                var ip = IPAddress.Parse("1.192.90.183");
+                var ip = IPAddress.Parse("166.111.4.100");
                 var data = reader.Find<Dictionary<string, object>>(ip);
 
                 Console.WriteLine("精度:{0}", System.Text.UTF8Encoding.UTF8.GetString((System.Byte[])data["accuracy"]));
