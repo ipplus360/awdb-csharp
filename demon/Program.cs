@@ -21,6 +21,8 @@ namespace demon
 
                 Console.WriteLine("洲:{0}", System.Text.UTF8Encoding.UTF8.GetString((System.Byte[])data["continent"]));
                 Console.WriteLine("国家编码:{0}", System.Text.UTF8Encoding.UTF8.GetString((System.Byte[])data["areacode"]));
+                //Console.WriteLine("行政编码:{0}", System.Text.UTF8Encoding.UTF8.GetString((System.Byte[])data["adcode"]));// 试用版无此字段
+                
                 Console.WriteLine("国家:{0}", System.Text.UTF8Encoding.UTF8.GetString((System.Byte[])data["country"]));
                 Console.WriteLine("邮编:{0}", System.Text.UTF8Encoding.UTF8.GetString((System.Byte[])data["zipcode"]));
                 Console.WriteLine("时区:{0}", System.Text.UTF8Encoding.UTF8.GetString((System.Byte[])data["timezone"]));
@@ -28,19 +30,13 @@ namespace demon
                 Console.WriteLine("定位方式:{0}", System.Text.UTF8Encoding.UTF8.GetString((System.Byte[])data["source"]));
             
 
-                List<object> array = (List<object>)data["multiAreas"];
-                var prov = ((Dictionary<string, object>)array[0])["prov"];
-                var city = ((Dictionary<string, object>)array[0])["city"];
-                var district = ((Dictionary<string, object>)array[0])["district"];
-                var lat = ((Dictionary<string, object>)array[0])["latwgs"];
-                var lng = ((Dictionary<string, object>)array[0])["lngwgs"];
-                var radius = ((Dictionary<string, object>)array[0])["radius"];
-                Console.WriteLine("省:{0}", System.Text.UTF8Encoding.UTF8.GetString((System.Byte[])prov));
-                Console.WriteLine("城市:{0}", System.Text.UTF8Encoding.UTF8.GetString((System.Byte[])city));
-                Console.WriteLine("区县:{0}", System.Text.UTF8Encoding.UTF8.GetString((System.Byte[])district));
-                Console.WriteLine("纬度:{0}", System.Text.UTF8Encoding.UTF8.GetString((System.Byte[])lat));
-                Console.WriteLine("经度:{0}", System.Text.UTF8Encoding.UTF8.GetString((System.Byte[])lng));
-                Console.WriteLine("半经:{0}", System.Text.UTF8Encoding.UTF8.GetString((System.Byte[])radius));
+                Console.WriteLine("省份:{0}", System.Text.UTF8Encoding.UTF8.GetString((System.Byte[])data["province"]));
+                Console.WriteLine("城市:{0}", System.Text.UTF8Encoding.UTF8.GetString((System.Byte[])data["city"]));
+                Console.WriteLine("区县:{0}", System.Text.UTF8Encoding.UTF8.GetString((System.Byte[])data["district"]));
+                Console.WriteLine("WGS84坐标系经度:{0}", System.Text.UTF8Encoding.UTF8.GetString((System.Byte[])data["lngwgs"]));
+                Console.WriteLine("WGS84坐标系纬度:{0}", System.Text.UTF8Encoding.UTF8.GetString((System.Byte[])data["latwgs"]));
+                Console.WriteLine("定位半径:{0}", System.Text.UTF8Encoding.UTF8.GetString((System.Byte[])data["radius"]));
+        
 
 
                 Console.WriteLine("运营商{0}:", System.Text.UTF8Encoding.UTF8.GetString((System.Byte[])data["isp"]));
