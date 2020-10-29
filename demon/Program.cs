@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using AiWen.Db;
 using System.Net;
 using System.Collections.Generic;
@@ -10,12 +10,12 @@ namespace demon
     {
         static void Main(string[] args)
         {
-            using (var reader = new Reader("C:\\Users\\Administrator\\Desktop\\awdb.awdb"))
+            using (var reader = new Reader("C:\\Users\\fengchuan\\Desktop\\IP_city_single_BD09_WGS84_ipv6_awdb.awdb"))
             {
                 var metadata = reader.Metadata;
 
                 
-                var ip = IPAddress.Parse("166.111.4.100");
+                var ip = IPAddress.Parse("2a03:f80:852:158:255:208:70:ffff");
                 var data = reader.Find<Dictionary<string, object>>(ip);
 
 
@@ -32,16 +32,22 @@ namespace demon
 
                 Console.WriteLine("省份:{0}", System.Text.UTF8Encoding.UTF8.GetString((System.Byte[])data["province"]));
                 Console.WriteLine("城市:{0}", System.Text.UTF8Encoding.UTF8.GetString((System.Byte[])data["city"]));
-                Console.WriteLine("区县:{0}", System.Text.UTF8Encoding.UTF8.GetString((System.Byte[])data["district"]));
+                //Console.WriteLine("区县:{0}", System.Text.UTF8Encoding.UTF8.GetString((System.Byte[])data["district"]));
                 Console.WriteLine("WGS84坐标系经度:{0}", System.Text.UTF8Encoding.UTF8.GetString((System.Byte[])data["lngwgs"]));
                 Console.WriteLine("WGS84坐标系纬度:{0}", System.Text.UTF8Encoding.UTF8.GetString((System.Byte[])data["latwgs"]));
                 Console.WriteLine("定位半径:{0}", System.Text.UTF8Encoding.UTF8.GetString((System.Byte[])data["radius"]));
         
 
 
-                Console.WriteLine("运营商{0}:", System.Text.UTF8Encoding.UTF8.GetString((System.Byte[])data["isp"]));
-                Console.WriteLine("AS号{0}:", System.Text.UTF8Encoding.UTF8.GetString((System.Byte[])data["asnumber"]));
-                Console.WriteLine("拥有者{0}:", System.Text.UTF8Encoding.UTF8.GetString((System.Byte[])data["owner"]));
+                Console.WriteLine("运营商:{0}", System.Text.UTF8Encoding.UTF8.GetString((System.Byte[])data["isp"]));
+                Console.WriteLine("AS号:{0}", System.Text.UTF8Encoding.UTF8.GetString((System.Byte[])data["asnumber"]));
+                Console.WriteLine("拥有者:{0}", System.Text.UTF8Encoding.UTF8.GetString((System.Byte[])data["owner"]));
+                // Console.WriteLine("拥有者:{0}", System.Text.UTF8Encoding.UTF8.GetString((System.Byte[])data));
+                //输出所有字段
+                foreach (string key in data.Keys)
+                {
+                    Console.WriteLine(string.Format("key: {0} value{1}", key, System.Text.UTF8Encoding.UTF8.GetString((System.Byte[])data[key])));
+                }
 
 
             }
